@@ -1,20 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @jpecanha
- Watch 0
-  Star 0
-  Fork 0 jpecanha/Brastempinho
- Code  Issues 0  Pull requests 0  Projects 1  Wiki  Pulse  Graphs  Settings
-Branch: master Find file Copy pathBrastempinho/server.js
-f8f9cbb  an hour ago
- Jefferson S Pecanha first
-0 contributors
-RawBlameHistory     
-33 lines (25 sloc)  676 Bytes
 // CONTACTS API ROUTES BELOW
 
 // Generic error handler used by all endpoints.
@@ -48,5 +31,34 @@ app.put("/contacts/:id", function(req, res) {
 
 app.delete("/contacts/:id", function(req, res) {
 });
-Contact GitHub API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy Security Status Help
+
+{
+  "_id": <ObjectId>,
+  "createDate": <Date>,
+  "firstName": <string>,
+  "lastName": <string>,
+  "email": <string>,
+  "phone": {
+    "mobile": <string>,
+    "work": <string>
+  },
+  "twitterHandle": <string>,
+  "address": <string>
+}
+
+app.post("/contacts", function(req, res) {
+  var newContact = req.body;
+  newContact.createDate = new Date();
+
+  if (!(req.body.firstName || req.body.lastName)) {
+    handleError(res, "Invalid user input", "Must provide a first or last name.", 400);
+  }
+
+  db.collection(CONTACTS_COLLECTION).insertOne(newContact, function(err, doc) {
+    if (err) {
+      handleError(res, err.message, "Failed to create new contact.");
+    } else {
+      res.status(201).json(doc.ops[0]);
+    }
+  });
+});
