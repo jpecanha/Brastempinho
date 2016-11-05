@@ -1,34 +1,8 @@
-// CONTACTS API ROUTES BELOW
+var express = require('express');
+var app = express();
 
-// Generic error handler used by all endpoints.
-function handleError(res, reason, message, code) {
-  console.log("ERROR: " + reason);
-  res.status(code || 500).json({"error": message});
-}
-
-/*  "/contacts"
- *    GET: finds all contacts
- *    POST: creates a new contact
- */
-
-app.get("/contacts", function(req, res) {
+app.get('/', function(req, res){
+  res.send('hello world');
 });
 
-app.post("/contacts", function(req, res) {
-});
-
-/*  "/contacts/:id"
- *    GET: find contact by id
- *    PUT: update contact by id
- *    DELETE: deletes contact by id
- */
-
-app.get("/contacts/:id", function(req, res) {
-});
-
-app.put("/contacts/:id", function(req, res) {
-});
-
-app.delete("/contacts/:id", function(req, res) {
-});
-
+app.listen(3000);
