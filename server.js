@@ -3,6 +3,15 @@ var path = require("path");
 var bodyParser = require("body-parser");
 var firebase = require("firebase");
 
+  var config = {
+    apiKey: "AIzaSyBzhK4uD5z4nvuXkVLQH2vWOJQatXnUKXI",
+    authDomain: "brastempinho.firebaseapp.com",
+    databaseURL: "https://brastempinho.firebaseio.com",
+    storageBucket: "brastempinho.appspot.com",
+    messagingSenderId: "961053661712"
+  };
+  firebase.initializeApp(config);
+
 var app = express()
 var CONTACTS_COLLECTION = "contacts";
 
