@@ -14,6 +14,10 @@ firebase.initializeApp({
   databaseURL: 'https://brastempinho.firebaseio.com/'
 });
 
+app.get('/', function(request, response) {
+  response.send('Hello World!')
+})
+
 app.get("/contacts", function(req, res) {
   db.collection(CONTACTS_COLLECTION).find({}).toArray(function(err, docs) {
     if (err) {
