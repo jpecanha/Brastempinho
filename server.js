@@ -10,10 +10,6 @@ app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.json());
 
-firebase.initializeApp({
-  databaseURL: 'https://brastempinho.firebaseio.com/'
-});
-
 app.get('/', function(request, response) {
   response.send('Hello World!')
 })
