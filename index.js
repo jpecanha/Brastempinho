@@ -1,13 +1,36 @@
 var express = require('express')
 var app = express()
 
-app.set('port', (process.env.PORT || 5000))
-app.use(express.static(__dirname + '/public'))
+// CONTACTS API ROUTES BELOW
 
-app.get('/', function(request, response) {
-  response.send('Hello World!')
-})
+// Generic error handler used by all endpoints.
+function handleError(res, reason, message, code) {
+  console.log("ERROR: " + reason);
+  res.status(code || 500).json({"error": message});
+}
 
-app.listen(app.get('port'), function() {
-  console.log("Node app is running at localhost:" + app.get('port'))
-})
+/*  "/contacts"
+ *    GET: finds all contacts
+ *    POST: creates a new contact
+ */
+
+app.get("/contacts", function(req, res) {
+});
+
+app.post("/contacts", function(req, res) {
+});
+
+/*  "/contacts/:id"
+ *    GET: find contact by id
+ *    PUT: update contact by id
+ *    DELETE: deletes contact by id
+ */
+
+app.get("/contacts/:id", function(req, res) {
+});
+
+app.put("/contacts/:id", function(req, res) {
+});
+
+app.delete("/contacts/:id", function(req, res) {
+});
